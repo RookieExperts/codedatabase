@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.fkit.dao.UserMapper">
+<resultMap type="org.fkit.model.User" id="userResultMap">
+	<id property="id" column="id"/>
+	<result property="userno" column="userno"/>
+	<result property="password" column="password"/>
+	<result property="username" column="username"/>
+	<result property="sex" column="sex"/>
+	<result property="age" column="age"/>
+	<result property="idCardNo" column="id_card_no"/>
+	<result property="phone" column="phone"/>
+	<result property="address" column="address"/>
+	<result property="remark" column="remark"/>
+</resultMap>
+
+<select id="selectUserByWhere" resultMap="userResultMap" parameterType="org.fkit.model.User">
+
+ SELECT USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK FROM sys_user
+ <where>
+	<if test="userno != null">
+		AND USERNO = #{userno}
+	</if>
+	<if test="password != null">
+		AND PASSWORD = #{password}
+	</if>
+ </where>
+</select>
+
+<select id="selectUser" resultType="int" parameterType="org.fkit.model.User">
+
+ SELECT count(*) countUser FROM sys_user
+ <where>
+	<if test="userno != null">
+		AND USERNO = #{userno}
+	</if>
+	<if test="password != null">
+		AND PASSWORD = #{password}
+	</if>
+ </where>
+</select>
+</mapper>
