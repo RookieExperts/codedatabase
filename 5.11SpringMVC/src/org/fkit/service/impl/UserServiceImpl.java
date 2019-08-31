@@ -1,5 +1,7 @@
 package org.fkit.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.fkit.dao.UserMapper;
@@ -21,5 +23,14 @@ public class UserServiceImpl implements IUserService {
 
 	public int selectUser(User user) {
 		return this.userMapper.selectUser(user);
+	}
+
+	/**
+	 * 查询所有的用户信息
+	 */
+	@Override
+	public List<User> selectUserAll() {
+		// TODO Auto-generated method stub
+		return this.userMapper.selectUserAll();
 	}
 }

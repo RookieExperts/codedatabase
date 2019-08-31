@@ -5,7 +5,7 @@ public class User {
 	private Integer id;//主键，自增
 	private String userno; //用户号
 	private String password; //密码
-	private String username; //用户号
+	private String username; //用户名
 	private String sex;//性别
 	private Integer age;//年龄
 	private String idCardNo;//身份证号

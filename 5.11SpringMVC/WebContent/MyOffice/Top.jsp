@@ -18,6 +18,7 @@ FORM {
 }
 </STYLE>
 <SCRIPT src="Top.files/Clock.js" type=text/javascript></SCRIPT>
+<script src="../js/jquery-1.9.1.min.js"></script>
 <META content="MSHTML 6.00.2900.5848" name=GENERATOR>
 </HEAD>
 <BODY 
@@ -31,9 +32,9 @@ href="#"><IMG src="Top.files/mail.gif"
 align=absMiddle border=0></A> 您有新消息<A id=HyperLink1 
 href="#">5</A>条 <IMG 
 src="Top.files/menu_seprator.gif" align=absMiddle> <A id=HyperLink2 
-href="#">返回首页</A> <IMG 
+href="javascript:void(0);" onclick="returnHome()">返回首页</A> <IMG 
 src="Top.files/menu_seprator.gif" align=absMiddle> <A id=HyperLink3 
-href="javascript:window.opener=null;%20window.close();">退出系统</A> </DIV>
+href="javascript:void(0);" onclick="logout()">退出系统</A> </DIV>
     <DIV style="DISPLAY: block; HEIGHT: 54px"></DIV>
     <DIV 
 style="BACKGROUND-IMAGE: url(../images/bg_nav.gif); BACKGROUND-REPEAT: repeat-x; HEIGHT: 30px">
@@ -42,7 +43,7 @@ style="BACKGROUND-IMAGE: url(../images/bg_nav.gif); BACKGROUND-REPEAT: repeat-x;
           <TR>
             <TD>
               <DIV><IMG src="Top.files/nav_pre.gif" align=absMiddle> 欢迎 <SPAN 
-      id=lblBra>华北电力科学研究所</SPAN> <SPAN id=lblDep>人力资源部</SPAN> [系统管理员 ] 光临 </DIV>
+      id=lblBra>华北电力科学研究所</SPAN> <SPAN id=lblDep>人力资源部</SPAN> [${user.username} ] 光临 </DIV>
             </TD>
             <TD align=right width="70%"><SPAN style="PADDING-RIGHT: 50px"><A 
       href="javascript:history.go(-1);"><IMG src="Top.files/nav_back.gif" 
@@ -64,6 +65,18 @@ style="BACKGROUND-IMAGE: url(../images/bg_nav.gif); BACKGROUND-REPEAT: repeat-x;
   <SCRIPT type=text/javascript>
     var clock = new Clock();
     clock.display(document.getElementById("clock"));
+    /**
+       退出登录
+    */
+    function logout(){
+    	window.parent.OutLogin();
+    }
+    /**
+    返回首页
+    */
+    function returnHome(){
+    	window.parent.returnHome();
+    }
 </SCRIPT>
 </form>
 </BODY>

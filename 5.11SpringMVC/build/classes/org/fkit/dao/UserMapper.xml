@@ -40,4 +40,9 @@
 	</if>
  </where>
 </select>
+
+<!-- 查询全部的用户信息 -->
+<select id="selectUserAll" resultMap="userResultMap">
+	SELECT ID,USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK FROM sys_user
+</select>
 </mapper>

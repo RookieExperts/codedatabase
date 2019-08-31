@@ -1,6 +1,7 @@
 package org.fkit.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
@@ -11,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.fkit.model.User;
 import org.fkit.service.IUserService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,9 +67,24 @@ public class LoginController {
 		}
 		
 	}
+	/**
+	 * 跳转到主页面
+	 * @return
+	 */
 	@RequestMapping(value="/main")
-	public String main() {
+	public String main(Model model) {
 		
 		return "main";
+	}
+	/**
+	 * 退出登录系统
+	 * brb
+	 * @return
+	 */
+	@RequestMapping(value="/logout")
+	public String Logout(HttpSession session) {
+		//清空session登录信息
+		session.invalidate();
+		return "login";
 	}
 }
