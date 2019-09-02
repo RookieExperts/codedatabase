@@ -17,12 +17,15 @@
 
 <select id="selectUserByWhere" resultMap="userResultMap" parameterType="org.fkit.model.User">
 
- SELECT USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK FROM sys_user
+ SELECT ID,USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK FROM sys_user
  <where>
-	<if test="userno != null">
+ 	<if test="id != null and id !=''">
+ 		AND ID = #{id}
+ 	</if>
+	<if test="userno != null and userno !=''">
 		AND USERNO = #{userno}
 	</if>
-	<if test="password != null">
+	<if test="password != null and userno !=''">
 		AND PASSWORD = #{password}
 	</if>
  </where>
@@ -32,10 +35,10 @@
 
  SELECT count(*) countUser FROM sys_user
  <where>
-	<if test="userno != null">
+	<if test="userno != null and userno !=''">
 		AND USERNO = #{userno}
 	</if>
-	<if test="password != null">
+	<if test="password != null and password !=''">
 		AND PASSWORD = #{password}
 	</if>
  </where>
@@ -45,4 +48,21 @@
 <select id="selectUserAll" resultMap="userResultMap">
 	SELECT ID,USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK FROM sys_user
 </select>
+<!-- 用户新增 -->
+
+<insert id="addUser" parameterType="org.fkit.model.User">
+	INSERT INTO sys_user(USERNO,PASSWORD,USERNAME,SEX,AGE,ID_CARD_NO,PHONE,ADDRESS,REMARK) values
+	(#{userno,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+     #{username,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{age,jdbcType=INTEGER}, #{idCardNo,jdbcType=VARCHAR}, 
+     #{phone,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+</insert>
+<!-- 用户删除 -->
+<delete id="deleteUser" parameterType="org.fkit.model.User">
+	DELETE  FROM sys_user WHERE ID = #{id}
+</delete>
+<!-- 用户信息修改 -->
+<update id="updateUser" parameterType="org.fkit.model.User">
+	UPDATE sys_user SET USERNO=#{userno},USERNAME=#{username},SEX=#{sex},AGE=#{age},ID_CARD_NO=#{idCardNo},PHONE=#{phone},ADDRESS=#{address},REMARK=#{remark}
+	where ID = #{id}
+</update>
 </mapper>

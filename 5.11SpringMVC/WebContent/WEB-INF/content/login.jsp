@@ -57,7 +57,7 @@
 
 			<!--1-->
 			<div class="music-lgin-text">
-				<input class="userno inputs" type="text" placeholder="用户名"/>
+				<input class="userno inputs" type="text" placeholder="用户号"/>
 			</div>
 			<!--2-->
 			<div class="music-lgin-text">
